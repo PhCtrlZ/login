@@ -19,21 +19,20 @@ class Login:
     def __init__(self):
         self.driver = webdriver.Chrome("chromedriver.exe")
     def login_fb(self,emails,passs):
-        self.driver.get("https://traodoisub.com/")
-        email = self.driver.find_element_by_id("username")
-        pasw = self.driver.find_element_by_id("password")
+        self.driver.get("Full link web mà bạn muốn login")
+        email = self.driver.find_element_by_id("Id tên đăng nhập trong web")
+        pasw = self.driver.find_element_by_id("Id nhập mật khẩu trong web")
         email.send_keys(emails)
         pasw.send_keys(passs)
-        button = self.driver.find_element_by_id("loginclick")
+        button = self.driver.find_element_by_id("Id nút ấn đăng nhập trong web")
         button.click()
         time.sleep(5)
         return self.driver
 new_login = Login()
-driver = new_login.login_fb("8EZ6Y19","daiyBeyfnF")
-driver.get("https://traodoisub.com/")
+driver = new_login.login_fb("tài khoản","mật khẩu")
 error_message = "Incorrect username or password."
 # get the errors (if there are)
-errors = driver.find_elements_by_class_name("alert alert-danger alert-dismissible show")
+errors = driver.find_elements_by_class_name("Id đăng nhập sai tài khoản hoặc mật khẩu")
 if any(error_message in e.text for e in errors):
     print("[!] Login failed")
 else:
